@@ -9,6 +9,20 @@ const subtract = document.getElementById("subtract");
 const period = document.getElementById("period");
 
 var addedPeriod = false;
+var prevOperator;
+
+
+
+const allButtons = document.getElementsByTagName("button");
+
+
+for (let i = 0; i < allButtons.length; i++)
+{
+    allButtons[i].addEventListener('click', function ()
+    {
+        console.log(addedPeriod);
+    });
+}
 
 
 // ON CLICK FUNCTIONS ON HTML
@@ -29,9 +43,17 @@ function backspaceInput()
         display.value = display.value.toString().slice(0, -1);
     }
 
-    if (!display.value.includes("."))
+    var prevDisplay = GetAllStringUntilCharacter(display.value.toString(), prevOperator);
+
+    console.log(prevDisplay);
+
+    if (!prevDisplay.includes("."))
     {
         addedPeriod = false;
+    }
+    else
+    {
+        addedPeriod = true;
     }
 }
 function calculate()
@@ -82,6 +104,8 @@ function calculate()
         addedPeriod = false;
     }
 }
+
+
 //FUNCTIONS
 function AppendOperator(operator)
 {
@@ -96,6 +120,14 @@ function AppendOperator(operator)
         console.log("DUPLICATION OF OPERATORS NOT ALLOWED");
     }
 }
+function GetAllStringUntilCharacter(inputStr, untilChar)
+{
+    var position = inputStr.lastIndexOf(untilChar).toString();
+
+    return inputStr.slice(position);
+}
+
+
 // ADD EVENT LISTNERS
 percent.addEventListener('click', function ()
 {
@@ -116,7 +148,7 @@ percent.addEventListener('click', function ()
         // Make sure theres no doubled operator
         AppendOperator("%");
         addedPeriod = false;
-
+        prevOperator = "%"
     }
 
 });
@@ -138,7 +170,7 @@ divide.addEventListener('click', function ()
         // Make sure theres no doubled operator
         AppendOperator("/");
         addedPeriod = false;
-
+        prevOperator = "/"
     }
 
 });
@@ -160,7 +192,7 @@ multiply.addEventListener('click', function ()
         // Make sure theres no doubled operator
         AppendOperator("*");
         addedPeriod = false;
-
+        prevOperator = "*"
     }
 });
 add.addEventListener('click', function ()
@@ -182,7 +214,7 @@ add.addEventListener('click', function ()
         // Make sure theres no doubled operator
         AppendOperator("+");
         addedPeriod = false;
-
+        prevOperator = "+"
     }
 });
 subtract.addEventListener('click', function ()
@@ -204,6 +236,7 @@ subtract.addEventListener('click', function ()
         // Make sure theres no doubled operator
         AppendOperator("-");
         addedPeriod = false;
+        prevOperator = "-"
     }
 });
 period.addEventListener('click', function ()
