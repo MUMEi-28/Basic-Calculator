@@ -13,32 +13,32 @@
 
 <body>
     <div class="calculator">
-        <input type="text" id="display" readonly>
+        <input type="text" id="display" readonly value="0">
 
         <div class="buttons">
-            <button class="orange">AC</button>
-            <button class="orange">DEL</button>
-            <button class="orange">%</button>
-            <button class="orange">/</button>
+            <button onclick="allClear()" class="orange">AC</button>
+            <button onclick="backspaceInput()" class="orange">DEL</button>
+            <button class="orange" id="percent">%</button>
+            <button class="orange" id="divide">/</button>
 
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button class="orange">x</button>
+            <button onclick="appendInput('1')">1</button>
+            <button onclick="appendInput('2')">2</button>
+            <button onclick="appendInput('3')">3</button>
+            <button class="orange" id="multiply">x</button>
 
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button class="orange">-</button>
+            <button onclick="appendInput('4')">4</button>
+            <button onclick="appendInput('5')">5</button>
+            <button onclick="appendInput('6')">6</button>
+            <button class="orange" id="subtract">-</button>
 
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button class="orange">+</button>
+            <button onclick="appendInput('7')">7</button>
+            <button onclick="appendInput('8')">8</button>
+            <button onclick="appendInput('9')">9</button>
+            <button class="orange" id="add">+</button>
 
-            <button>0</button>
-            <button>.</button>
-            <button class="orange" id="equals">=</button>
+            <button onclick="appendInput('0')">0</button>
+            <button id="period">.</button>
+            <button onclick="calculate()" class="orange" id="equals">=</button>
         </div>
     </div>
 </body>
