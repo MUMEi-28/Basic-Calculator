@@ -43,9 +43,13 @@ function allClear()
 function backspaceInput()
 {
     // Makes sure that the 0 is not deleted
-    if (display.value.toString().charAt(display.value.length - 1) === "0")
+    if (display.value.length > 1)
     {
         display.value = display.value.toString().slice(0, -1);
+    }
+    else if (display.value.length === 1)
+    {
+        display.value = "0";
     }
 
     var prevDisplay = GetAllStringUntilCharacter(display.value.toString(), prevOperator);
