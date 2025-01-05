@@ -20,7 +20,7 @@ for (let i = 0; i < allButtons.length; i++)
 {
     allButtons[i].addEventListener('click', function ()
     {
-        console.log(addedPeriod);
+        console.log("BUTTON CLICKED");
     });
 }
 
@@ -28,6 +28,11 @@ for (let i = 0; i < allButtons.length; i++)
 // ON CLICK FUNCTIONS ON HTML
 function appendInput(input)
 {
+    if (display.value === "0")
+    {
+        display.value = display.value.toString().slice(0, -1);
+        console.log("displayvalue 0")
+    }
     display.value += input;
 }
 function allClear()
@@ -38,7 +43,7 @@ function allClear()
 function backspaceInput()
 {
     // Makes sure that the 0 is not deleted
-    if (display.value.length > 1)
+    if (display.value.toString().charAt(display.value.length - 1) === "0")
     {
         display.value = display.value.toString().slice(0, -1);
     }
